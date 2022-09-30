@@ -17,16 +17,14 @@ namespace UserMaintenance
         public Form1()
         {
             InitializeComponent();
-            lblLastName.Text = Resource2.LastName;
-            lblFirstName.Text = Resource2.FirstName;
+            lblLastName.Text = Resource2.FullName;
             btnAdd.Text = Resource2.Add;
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
             User1 user = new User1();
-            user.FirstName = textBox2.Text;
-            user.LastName = textBox1.Text;
+            user.FullName = textBox1.Text;
             users.Add(user);
         }
     }
