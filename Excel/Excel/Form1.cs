@@ -66,6 +66,7 @@ namespace Excel
                 values[counter, 6] = flat.FloorArea;
                 values[counter, 7] = flat.Price;
                 values[counter, 8] = flat.Price / flat.FloorArea;
+                counter++;
             }
         }
 
