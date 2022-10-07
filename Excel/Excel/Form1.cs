@@ -18,15 +18,57 @@ namespace Excel
         List<Flat> Flats;
         Excelke.Application xlApp;
         Excelke.Workbook xlWB;
+        Excelke.Worksheet xlSheet;
         public Form1()
         {
             InitializeComponent();
             LoadData();
+            CreateExcel();
         }
 
         void LoadData()
         {
             Flats = context.Flats.ToList();
+        }
+
+        void CreateTable()
+        {
+            string[] headers = new string[]
+            {
+                "Kód",
+                "Eladó",
+                "Oldal",
+                "Kerültet",
+                "Lift",
+                "Szobák száma",
+                "Alapterület (m2)",
+                "Ár (mft)",
+                "Négyzetméterár (Ft/m2)"
+            };
+        }
+
+        void CreateExcel()
+        {
+            try
+            {
+                xlApp = new Excelke.Application();
+
+                xlWB = xlApp.Workbooks.Add(Missing.Value);
+
+                xlSheet = xlWB.ActiveSheet;
+                xlApp.Visible = true;
+                xlApp.UserControl = true;
+            }
+            catch (Exception ex)
+            {
+                string errMsg = string.Format("Error: {0}\nLine: {1}", ex.Message, ex.Source);
+                MessageBox.Show(errMsg, "Error");
+
+                xlWB.Close(false, Type.Missing, Type.Missing);
+                xlApp.Quit();
+                xlWB = null;
+                xlApp = null;
+            }
         }
     }
 }
