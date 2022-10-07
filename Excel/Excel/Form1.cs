@@ -44,7 +44,15 @@ namespace Excel
                 "Alapterület (m2)",
                 "Ár (mft)",
                 "Négyzetméterár (Ft/m2)"
+
+
             };
+            for (int i = 0; i < headers.Length; i++)
+            {
+                xlSheet.Cells[i + 1, 1] = headers[i];
+            };
+
+            object[,] values = new object[Flats.Count, headers.Length];
         }
 
         void CreateExcel()
