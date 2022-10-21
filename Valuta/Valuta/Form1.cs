@@ -20,20 +20,8 @@ namespace Valuta
         public Form1()
         {
             InitializeComponent();
-            GetResult();
             dataGridView1.DataSource = Rates;
 
-
-
-
-
-            XmlDocument xml = new XmlDocument();
-            xml.LoadXml(result);
-
-        }
-
-        private static void GetResult()
-        {
             var mnbService = new MNBArfolyamServiceSoapClient();
 
             var request = new GetExchangeRatesRequestBody()
@@ -46,7 +34,27 @@ namespace Valuta
             var response = mnbService.GetExchangeRates(request);
 
             var result = response.GetExchangeRatesResult;
-        }
 
+
+
+            XmlDocument xml = new XmlDocument();
+            xml.LoadXml(result);
+
+            foreach (XmlElement element in xml.DocumentElement)
+            {
+                var rate = new RateData();
+                Rates.Add(rate);
+
+                rate.Date = DateTime.Parse(element.GetAttribute("date"));
+
+                var childElement = (XmlElement)element.ChildNodes[0];
+                rate.Currency = childElement.GetAttribute("curr");
+
+                var unit = decimal.Parse(childElement.GetAttribute("unit"));
+                var value = decimal.Parse(childElement.InnerText);
+                if (unit != 0)
+                    rate.Value = value / unit;
+            }
+        }
     }
 }
