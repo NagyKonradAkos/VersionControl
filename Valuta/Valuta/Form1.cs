@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml;
 using Valuta.Entities;
 using Valuta.MnbServiceReference;
 
@@ -21,6 +22,14 @@ namespace Valuta
             InitializeComponent();
             GetResult();
             dataGridView1.DataSource = Rates;
+
+
+
+
+
+            XmlDocument xml = new XmlDocument();
+            xml.LoadXml(result);
+
         }
 
         private static void GetResult()
