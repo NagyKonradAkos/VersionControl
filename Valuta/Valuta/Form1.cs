@@ -7,17 +7,20 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Valuta.Entities;
 using Valuta.MnbServiceReference;
 
 namespace Valuta
 {
     public partial class Form1 : Form
     {
+        BindingList<RateData> Rates = new BindingList<RateData>();
         
         public Form1()
         {
             InitializeComponent();
             GetResult();
+            dataGridView1.DataSource = Rates;
         }
 
         private static void GetResult()
