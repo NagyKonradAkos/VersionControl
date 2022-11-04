@@ -16,11 +16,6 @@ namespace Christmas.Entities
 
         public Toy CreateNew()
         {
-            throw new NotImplementedException();
-        }
-
-        public Toy CreteNew()
-        {
             return new Ball();
         }
     }
