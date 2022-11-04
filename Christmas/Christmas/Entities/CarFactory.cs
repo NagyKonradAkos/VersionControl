@@ -7,21 +7,11 @@ using System.Threading.Tasks;
 
 namespace Christmas.Entities
 {
-    public class BallFactory : IToyFactory
+    class CarFactory : IToyFactory
     {
-        public BallFactory()
-        {
-
-        }
-
         public Toy CreateNew()
         {
-            throw new NotImplementedException();
-        }
-
-        public Toy CreteNew()
-        {
-            return new Ball();
+            return new Car();
         }
     }
 }
