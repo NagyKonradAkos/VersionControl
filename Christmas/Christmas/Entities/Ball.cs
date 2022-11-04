@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Christmas.Abstractions;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
@@ -8,29 +9,11 @@ using System.Windows.Forms;
 
 namespace Christmas.Entities
 {
-    public class Ball : Label
+    public class Ball : Toy
     {
-        public Ball()
+        protected override void Drawimage(Graphics g)
         {
-            AutoSize = false;
-            Width = 50;
-            Height = 50;
-            Paint += Ball_Paint;
-        }
-
-        private void Ball_Paint(object sender, PaintEventArgs e)
-        {
-            Drawimage(e.Graphics);
-        }
-
-        protected void Drawimage(Graphics g)
-        {
-            g.FillEllipse(new SolidBrush(Color.Blue), 0, 0, Width, Height);
-        }
-
-        public void MoveBall()
-        {
-            Left += 1;
+            throw new NotImplementedException();
         }
     }
 }
