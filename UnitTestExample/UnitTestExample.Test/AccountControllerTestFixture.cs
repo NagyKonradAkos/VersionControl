@@ -8,6 +8,11 @@ namespace UnitTestExample.Test
 {
     public class AccountControllerTestFixture
     {
+        var accountController = new AccountController();
+
+        var accountController = new AccountController();
+
+        Assert.AreEqual(expectedResult, actualResult);
         [Test]
         public void TestValidateEmail(string email, bool expectedResult)
         {
