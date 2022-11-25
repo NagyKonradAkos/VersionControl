@@ -1,22 +1,33 @@
-﻿using System;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using UnitTestExample.Controllers;
 
 namespace UnitTestExample.Test
 {
     public class AccountControllerTestFixture
     {
-        var accountController = new AccountController();
-
-        var accountController = new AccountController();
-
-        Assert.AreEqual(expectedResult, actualResult);
-        [Test]
+        public AccountControllerTestFixture()
+        {
+            
+        }
+        
+        [
+            Test,
+            TestCase("abcd1234", false),
+            TestCase("irf@uni-corvinus", false),
+            TestCase("irf.uni-corvinus.hu", false),
+            TestCase("irf@uni-corvinus.hu", true)
+        ]
         public void TestValidateEmail(string email, bool expectedResult)
         {
+            var accountController = new AccountController();
+            var actualResult = accountController.ValidateEmail(email);
 
+            Assert.AreEqual(expectedResult, actualResult);
         }
     }
 }
