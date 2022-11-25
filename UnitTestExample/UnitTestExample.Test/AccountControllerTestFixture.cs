@@ -50,10 +50,9 @@ namespace UnitTestExample.Test
         [Test]
         public void TestRegisterValidateException(string email, string password)
         {
-            // Arrange
+
             var accountController = new AccountController();
 
-            // Act
             try
             {
                 var actualResult = accountController.Register(email, password);
@@ -63,8 +62,6 @@ namespace UnitTestExample.Test
             {
                 Assert.IsInstanceOf<ValidationException>(ex);
             }
-
-            // Assert
         }
     }
 }
