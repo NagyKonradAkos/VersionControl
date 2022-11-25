@@ -13,10 +13,6 @@ namespace UnitTestExample.Test
 {
     public class AccountControllerTestFixture
     {
-        public AccountControllerTestFixture()
-        {
-            
-        }
         
         [
             Test,
