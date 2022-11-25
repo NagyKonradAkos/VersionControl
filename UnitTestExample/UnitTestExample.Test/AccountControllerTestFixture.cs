@@ -1,4 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 using System;
 using System.Activities;
 using System.Collections.Generic;
@@ -6,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using UnitTestExample.Controllers;
+using Assert = NUnit.Framework.Assert;
 
 namespace UnitTestExample.Test
 {
@@ -17,11 +19,11 @@ namespace UnitTestExample.Test
         }
         
         [
-            Test
-            //TestCase("abcd1234", false),
-            //TestCase("irf@uni-corvinus", false),
-            //TestCase("irf.uni-corvinus.hu", false),
-            //TestCase("irf@uni-corvinus.hu", true)
+            Test,
+            TestCase("abcd1234", false),
+            TestCase("irf@uni-corvinus", false),
+            TestCase("irf.uni-corvinus.hu", false),
+            TestCase("irf@uni-corvinus.hu", true)
         ]
         public void TestValidateEmail(string email, bool expectedResult)
         {
@@ -32,9 +34,9 @@ namespace UnitTestExample.Test
         }
 
         [
-            Test
-            //TestCase("irf@uni-corvinus.hu", "Abcd1234"),
-            //TestCase("irf@uni-corvinus.hu", "Abcd1234567")
+            Test,
+            TestCase("irf@uni-corvinus.hu", "Abcd1234"),
+            TestCase("irf@uni-corvinus.hu", "Abcd1234567")
         ]
         public void TestRegisterHappyPath(string email, string password)
         {
