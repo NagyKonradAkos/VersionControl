@@ -49,7 +49,13 @@ namespace UnitTestExample.Test
             Assert.AreNotEqual(Guid.Empty, actualResult.ID);
         }
 
-        [Test]
+        [Test,
+        TestCase("irf@uni-corvinus", "Abcd1234"),
+        TestCase("irf.uni-corvinus.hu", "Abcd1234"),
+        TestCase("irf@uni-corvinus.hu", "abcd1234"),
+        TestCase("irf@uni-corvinus.hu", "ABCD1234"),
+        TestCase("irf@uni-corvinus.hu", "abcdABCD"),
+        TestCase("irf@uni-corvinus.hu", "Ab1234"),]
         public void TestRegisterValidateException(string email, string password)
         {
 
