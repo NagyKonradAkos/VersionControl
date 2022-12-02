@@ -31,7 +31,7 @@ namespace MIkroszim
             {
                 for (int i = 0; i < Population.Count; i++)
                 {
-                    //SimStep();
+                    SimStep(year, Population[i]);
                 }
 
                 int nbrOfMales = (from x in Population
