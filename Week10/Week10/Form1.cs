@@ -26,6 +26,7 @@ namespace Week10
         public Form1()
         {
             InitializeComponent();
+            button1.Text = "start";
 
             ga = gc.ActivateDisplay();
             this.Controls.Add(ga);
@@ -79,5 +80,13 @@ namespace Week10
             gc.Start();
         }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            gc.ResetCurrentLevel();
+            gc.AddPlayer(winnerBrain.Clone());
+            gc.AddPlayer();
+            ga.Focus();
+            gc.Start(true);
+        }
     }
 }
